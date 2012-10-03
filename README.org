@@ -1,3 +1,8 @@
 
 * Setup
-  Installing the database from the be-the-critic_<date>.sql file.
+  Installing the database from the be-the-critic_<date>.sql file. Update your
+  config files to match your specific localhost setup and run these lines of
+  code.
+
+  : $ git update-index --assume-unchanged application/config/config.php
+  : $ git update-index --assume-unchanged application/config/database.php
