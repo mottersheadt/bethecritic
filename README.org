@@ -1,0 +1,3 @@
+
+* Setup
+  Installing the database from the be-the-critic_<date>.sql file.
