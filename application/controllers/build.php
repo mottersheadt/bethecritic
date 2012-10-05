@@ -70,4 +70,45 @@ class build extends CI_Controller
 		? $html : 'failed' );
     }
 
+    function category_table()
+    {
+	$this->load->dbforge();
+	$this->load->database();
+	
+	// assign shorter pointer
+	$table			= $this->dbforge;
+	$db			= $this->db;
+
+	// drop table if exists
+	$table->drop_table( 'category' );
+
+	// define fields
+	$fields['id']		= array(
+					'type'			=> 'int',
+					'unsigned'		=> true,
+					'constraint'		=> 11,
+					'auto_increment'	=> true
+					);
+	$fields['name']		= array(
+					'type'			=> 'tinytext'
+					);
+	$fields['weight']	= array(
+					'type'			=> 'int',
+					'constraint'		=> 11
+					);
+	// add fields
+	$table->add_field( $fields );
+
+	// add primary key
+	$table->add_key( 'id', true );
+
+	// create table if not exists and print success
+	printf( '<h2>%s:</h2><pre>%s</pre>', 
+	    $table->create_table( 'category', true )
+		? 'success'
+		: 'failed' ,
+	    $db->last_query() ) ;
+    }
+
+
 }
